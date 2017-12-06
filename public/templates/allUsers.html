@@ -1,0 +1,21 @@
+<div class="text-center"> 
+    <div ng-include="'templates/common/header.html'"></div>  
+</div>
+Hii {{username}}  
+<table border="1">
+	<tr>
+		<td><center>User name</center></td>
+		<td><center>Full name</center></td>
+		<td><center>Contact no</center></td>
+		<td><center>Action</center></td>
+	</tr>
+	<tr ng-repeat="data in allUser" ng-init="Data=data;Data.password=data.full_name">
+		<td ng-hide="data.edit">{{data.username}}</td>
+		<td ng-hide="data.edit">{{data.full_name}}</td>
+		<td ng-hide="data.edit">{{data.contact_no}}</td>
+		<td ng-show="data.edit"><input ng-model="data.username"</td>
+		<td ng-show="data.edit"><input ng-model="data.full_name"</td>
+		<td ng-show="data.edit"><input ng-model="data.contact_no"</td>
+		<td ><button class="btn btn-success" ng-click="cont(Data)" ng-hide="data.edit">Edit</button><button class="btn btn-success" ng-show="data.edit" ng-click="cont(data)">Save</button>&nbsp;&nbsp;<button ng-click="delete(data)">Delete</button></td>
+	</tr>
+</table>

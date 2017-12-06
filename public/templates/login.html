@@ -1,0 +1,40 @@
+<style type="text/css">
+   .has-error input, .has-error span {
+   border-color: red !important;
+   color: red !important;
+   float: left;
+   }
+</style>
+<form class="form-horizontal m-t-20" name="loginForm" novalidate>
+<table>
+	<tr>
+		<td>
+			Username
+		</td>
+		<td>
+			<input type="email" name="email" ng-model="formData.username" required>
+			<span style="color:red" ng-show="loginForm.email.$dirty && loginForm.email.$invalid">
+			<span ng-show="loginForm.email.$error.required">Email is required.</span>
+			<span ng-show="loginForm.email.$error.email">Invalid email address.</span>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Password
+		</td>
+		<td>
+			<input type="password" name="password" ng-model="formData.password" ng-minlength="5">
+			<span style="color:red" ng-if="!loginForm.password.$valid">The value is too short</span>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			
+		</td>
+		<td>
+			<button ng-disabled="loginForm.password.$dirty && loginForm.password.$invalid ||  
+			loginForm.email.$dirty && loginForm.email.$invalid" ng-click="signInUser(loginForm.$valid)">Log In</button> 
+		</td>
+	</tr>
+</table>
+</form>

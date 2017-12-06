@@ -1,0 +1,60 @@
+<style type="text/css">
+   .has-error input, .has-error span .has-error textarea {
+   border-color: red !important;
+   color: red !important;
+   float: left;
+   p.ng-binding.ng-scope {
+    padding: 20px 0px 20px 15px;
+    width: auto;
+    box-shadow: 0px 1px 3px 3px #d8d8d8;
+}
+   }
+</style>
+<div class="fixed-left" ng-controller="allUsersCtrl">
+   <div id="wrapper">
+      <div class="topbar">
+         <div class="topbar-left">
+            <div class="text-center"> 
+               <div ng-include="'templates/common/title.html'"></div>  
+            </div>
+         </div>
+         <div class="navbar navbar-default" role="navigation">
+            <div class="container">
+               <div class="">
+                  <div class="pull-left">
+                     <button type="button" class="button-menu-mobile open-left waves-effect waves-light"> <i class="ion-navicon"></i> </button>
+                     <span class="clearfix"></span>
+                  </div>
+                  <!-- <form class="navbar-form pull-left" role="search">
+                     <div class="form-group">
+                        <input type="text" ng-model="search" class="form-control search-bar" placeholder="Search..." maxlength="15"  >
+                     </div>
+                     <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
+                  </form> -->
+                  <ul class="nav navbar-nav navbar-right pull-right">
+                     <li class="dropdown">
+                        <a href="" class="dropdown-toggle profile waves-effect waves-light" data-toggle="dropdown" aria-expanded="true"> <img src="assets/images/avatar-1.jpg" alt="user-img" class="img-circle"> <span class="profile-username"> {{ username }} <br/> </span> </a>
+                        {{$scope.allUser}}
+                        <!-- <ul class="dropdown-menu">
+                           <li><a href="javascript:void(0)"> Profile</a></li>
+                           <li><a href="javascript:void(0)">Settings </a></li>
+                           <li class="divider"></li>
+                           <li><a href="" ng-click="logout()"> Logout</a></li>
+                        </ul> -->
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div ng-include="'templates/common/sideBar.html'"></div>
+      <div class="content-page">
+         <div class="content">
+            <div class="container heading_section">
+              
+               </div>
+               <div class="col-sm-2">
+               </div>
+            </div>
+         </div>
+         <div ng-include="'templates/common/footer.html'"></div> 

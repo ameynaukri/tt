@@ -1,0 +1,156 @@
+<style type="text/css">
+   .has-error input, .has-error span .has-error textarea {
+   border-color: red !important;
+   color: red !important;
+   float: left;
+   }
+</style>
+<div class="fixed-left" ng-controller="allUserCtrl">
+   <div id="wrapper">
+      <div class="topbar">
+         <div class="topbar-left">
+            <div class="text-center">
+            <div ng-include="'templates/common/title.html'"></div>   
+            </div>
+         </div>
+         <div class="navbar navbar-default" role="navigation">
+            <div class="container">
+               <div class="">
+                  <div class="pull-left">
+                     <button type="button" class="button-menu-mobile open-left waves-effect waves-light"> <i class="ion-navicon"></i> </button>
+                     <span class="clearfix"></span>
+                  </div>
+                  <!-- <form class="navbar-form pull-left" role="search">
+                     <div class="form-group">
+                        <input type="text" ng-model="search" class="form-control search-bar" placeholder="Search..." maxlength="15"  >
+                     </div>
+                     <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
+                  </form> -->
+                  <ul class="nav navbar-nav navbar-right pull-right">
+                     <li class="dropdown">
+                        <a href="" class="dropdown-toggle profile waves-effect waves-light" data-toggle="dropdown" aria-expanded="true"> <img src="assets/images/avatar-1.jpg" alt="user-img" class="img-circle"> <span class="profile-username"> {{ username }} <br/></span> 
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div ng-include="'templates/common/sideBar.html'"></div>
+     
+      <div class="content-page">
+         <div class="content">
+            <div class="container heading_section">
+               <div class="row">
+                  <div class="col-sm-1">
+                     
+                        
+                        
+                    
+                  </div>
+                  <div class="col-sm-10" >
+                     <div class="panel panel-primary">
+                        <center>
+                           <h4 class="m-t-0 heading_top">Edit admin details</h4>
+                        </center>
+                        <div class="panel-body" style="padding:0 32px;" >
+                          
+                           <form class="form-horizontal" role="form" name="AdminFrm" novalidate>
+                           
+
+                              <!-- {{ data.id }}
+                              {{ data.contact_no }} -->
+                            
+                              <div class="form-group">
+                                 <br/>  <br/>
+                                 <input type="text" 
+                                    class="ng-hide"
+                                    name="id"
+                                    ng-model="data.id"
+                                    >
+                                 <div ng-class="{ 'has-error' : (submitted && AdminFrm.username.$error.required) || (AdminFrm.username.$invalid && !AdminFrm.username.$pristine) }" >
+                                    <label class="col-md-2 control-label">Email id</label>
+                                    <div class="col-md-10">
+                                       <input type="text" 
+                                          class="form-control"
+                                          name="username"
+                                          ng-model="data.username"
+                                          placeholder="Enter Email" 
+                                          ng-pattern="/^[a-z]+[a-z0-9._-]+@[a-z]+\.[a-z.]{2,5}$/"
+                                          required=""
+
+                                          >
+                                       <span ng-show="(submitted && AdminFrm.username.$error.required) || (AdminFrm.username.$invalid && !AdminFrm.username.$pristine)" class="help-block">
+                                       <span ng-show="AdminFrm.username.$error.required"> Email id is required.</span>
+                                       <span ng-show="AdminFrm.username.$error.pattern"> Invalid email id.</span>
+                                       </span>  
+                                    </div>
+                                 </div>
+                              </div>
+                              
+                              <div class="form-group" ng-class="{ 'has-error' : (submitted && AdminFrm.contact_no.$error.required) || (AdminFrm.contact_no.$invalid && !AdminFrm.contact_no.$pristine) }">
+                              <label class="col-md-2 control-label">Phone number</label>
+                              <div class="col-md-10">
+                              <input type="text" 
+                                 class="form-control"
+                                 name="contact_no"
+                                 ng-model="data.contact_no"
+                                 ng-pattern="/^[0-9]*$/"
+                                 maxlength="10"
+                                 minlength="10" 
+                                 placeholder="Enter Phone number" 
+                                 required="">
+                              <span ng-show="(submitted && AdminFrm.contact_no.$error.required) || (AdminFrm.contact_no.$invalid && !AdminFrm.contact_no.$pristine)" class="help-block">
+                              <span style="color: #a94442" ng-show="AdminFrm.contact_no.$error.required"> Phone Number is required.</span>
+                              <span style="color: #a94442"  ng-show="AdminFrm.contact_no.$error.pattern"> Enter only numbers. </span>
+                              </span>
+                              <span style="color: #a94442" ng-show="AdminFrm.contact_no.$error.maxlength">Number is more then 10 digits</span>
+                              </span>
+                              <span style="color: #a94442" ng-show="AdminFrm.contact_no.$error.minlength">Number is less then 10 digits</span>
+                              </span>
+                              </div>
+                              </div>
+                              
+                        </div>
+                        <!--  -->
+                        <div class="form-group text-center m-t-40">
+                        <div class="col-xs-12">
+                        <button class="btn btn-primary btn-block btn-lg waves-effect waves-light" ng-click="regAddAdmin(AdminFrm.$valid)">Submit</button> 
+                        </div>
+                        </div>
+                       
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-sm-1">
+            </div>
+         </div>
+      </div>
+      <div ng-include="'templates/common/footer.html'"></div> 
+   </div>
+</div>
+</div>
+
+<script type="text/javascript">
+   /*function initializeAutocomplete(){
+     var input = document.getElementById('locality');
+     var options = {}
+   
+     var autocomplete = new google.maps.places.Autocomplete(input, options);
+   
+     google.maps.event.addListener(autocomplete, 'place_changed', function() {
+       var place = autocomplete.getPlace();
+       var lat = place.geometry.location.lat().toFixed(6)+"1";
+       var lng = place.geometry.location.lng().toFixed(6)+"1";
+       //var placeId = place.place_id;
+       alert("lat = "+lat);
+       alert("lng = "+lng);
+       document.getElementById("latitude").value = lat;
+       document.getElementById("longitude").value = lng;
+       //document.getElementById("location_id").value = placeId;
+     });
+   }*/
+</script>
+<script src="assets/js/app.js"></script>
